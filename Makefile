@@ -32,7 +32,7 @@ build-wasm: generate-c
 	#clang -v $(CFLAGS) --target=wasm32-unknown-wasi --sysroot /tmp/wasi-libc $(OUT_DIR)/random-forest.wasm -o $(OUT_DIR)/main.wasm c/main.c
 	# Modules without a main are not spec'd out as part of wasi. see: https://github.com/CraneStation/wasi-sdk/issues/62
 	cat c/main.c >> c/random-forest.c
-	clang -v $(CFLAGS) --target=wasm32-unknown-wasi --sysroot /tmp/wasi-libc -o $(OUT_DIR)/random-forest.wasm c/random-forest.c
+	clang -v $(CFLAGS) -O3 -flto -Wl,--lto-O3 --target=wasm32-unknown-wasi --sysroot /tmp/wasi-libc -o $(OUT_DIR)/random-forest.wasm c/random-forest.c
 
 
 clean:

@@ -1,4 +1,4 @@
-# ANMLEE: A Nifty ML EE (pronounced a·nom·a·ly)
+# ANMLEE: A Nascent ML EE (pronounced a·nom·a·ly)
 
 > !!THIS IS A WORK IN PROGRESS!!
 
