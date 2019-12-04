@@ -3,3 +3,5 @@ python/.ipynb_checkpoints
 wasi-libc
 wasi-sdk
 .DS_Store
+*.wasm
+*/target
