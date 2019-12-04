@@ -5,6 +5,8 @@ extern void eth2_blockDataCopy(const unsigned long * outputOffset, const unsigne
 extern void eth2_savePostStateRoot(const unsigned long * offset);
 */
 
+void print(const unsigned int * output, unsigned int outputLength);
+
 int max(double arr[], int n) 
 { 
     int i; 
@@ -22,12 +24,19 @@ void main() {
     double output[3] = { 0 };
     char *output_names[3] = {"setosa","versicolor","virginica"};
     score(input,output);
-
-    //printf("Probabilities: ");
+    char *prob_str = "\nProbabilities: \n";
+    //print((const unsigned int *)prob_str,(unsigned int)strlen(prob_str));
     //for(int i = 0; i < 3; i++) {
     //  printf("%f ", output[i]);
     //}
-    //printf("\nModel Predicts: %s\n",output_names[max(output,3)]);
+    
+    char *model_pred_str = "\nModel Predicts: ";
+    int model_pred_len = strlen(model_pred_str);
+    char *predicted_name = output_names[max(output,3)];
+    int predicted_name_len = 6;//strlen(predicted_name);
+    print((const unsigned int *)model_pred_str,(unsigned int)model_pred_len);
+    print((const unsigned int *)predicted_name,(unsigned int)predicted_name_len);
+    print((const unsigned int *)"\n\n",(unsigned int)4);
     
 
 }

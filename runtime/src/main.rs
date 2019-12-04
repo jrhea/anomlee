@@ -2,9 +2,10 @@ use ewasm::{Execute, RootRuntime};
 
 fn main() {
     let code = include_bytes!("/Users/jonny/projects/consensys/pegasys/ee/anmlee/build/random-forest.wasm").to_vec();
-    println!("foo");
     let mut runtime = RootRuntime::new(&code, &[], [0u8; 32]);
-    println!("bar");
+    runtime.set_logger(|b| {
+        print!("{}", b);
+    });
     let _post = runtime.execute();
 }
 
