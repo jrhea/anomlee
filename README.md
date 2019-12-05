@@ -27,15 +27,8 @@ brew install ninja
 
 ## Build 
 
-Native:
-
 ```bash
-make build-native
-```
-
-Wasm
-```bash
-make build-wasm
+make anmlee
 ```
 
 ## Run

@@ -1,7 +1,12 @@
 use ewasm::{Execute, RootRuntime};
 
 fn main() {
-    let code = include_bytes!("/Users/jonny/projects/consensys/pegasys/ee/anmlee/build/random-forest.wasm").to_vec();
+    fn asm() -> Vec<u8> {
+        let ret = include_bytes!(concat!(
+            env!("OUT_DIR"),"/../../../../../../build/random-forest.wasm"));
+        ret.to_vec()
+    }
+    let code = asm();
     let mut runtime = RootRuntime::new(&code, &[], [0u8; 32]);
     runtime.set_logger(|b| {
         print!("{}", b);
