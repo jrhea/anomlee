@@ -1,5 +1,17 @@
-#define EXPORT __attribute__((used))
+#ifdef NATIVE
 
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/time.h>
+
+
+#define print(x,dummy) printf(x)
+#define MAIN int main()
+#define EXPORT
+#else
+#define EXPORT __attribute__((used))
+#define MAIN void main()
 void print(const unsigned int * output, unsigned int outputLength);
 
 // Reverses a string 'str' of length 'len' 
@@ -54,6 +66,9 @@ static void f2s(float n, char* res, int afterpoint)
         i2s((int)fpart, res + i + 1, afterpoint); 
     } 
 } 
+#endif
+
+void score(double * input, double * output);
 
 static int max(double arr[], int n) 
 { 
@@ -67,25 +82,40 @@ static int max(double arr[], int n)
     return max; 
 } 
 
-EXPORT void main() {
+EXPORT MAIN {
+#ifdef NATIVE
+    struct timeval start, end;
+    gettimeofday(&start,NULL);
+#endif
     double input[4] = {5.0,3.4,1.5,0.2};
     double output[3] = { 0 };
     const char *output_names[3] = {"setosa    ","versicolor","virginica "};
     score(input,output);
+#ifdef NATIVE
+    gettimeofday(&end,NULL);
+    long seconds = (end.tv_sec - start.tv_sec);
+	long micros = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
+    printf("\nExecution time: %d microseconds\n\n",micros);
+#endif
     const char prob_str[19] = "\nProbabilities: \n";
     print((const unsigned int *)prob_str,(unsigned int)19);
+#ifdef NATIVE
     for(int i = 0; i < 3; i++) {
-      const char output_str[6];
+      printf("%f ", output[i]);
+    }
+#else
+    for(int i = 0; i < 3; i++) {
+      char output_str[6];
       f2s(output[i],output_str,4);
       print((const unsigned int *)output_str,(unsigned int)6);
       print((const unsigned int *)" ",(unsigned int)1);
     }
+#endif
     print((const unsigned int *)"\n\n",(unsigned int)4);
     const char model_pred_str[22] = "Model Predicts: \n";
     const char *predicted_name = output_names[max(output,3)];
     print((const unsigned int *)model_pred_str,(unsigned int)22);
     print((const unsigned int *)predicted_name,(unsigned int)10);
     print((const unsigned int *)"\n\n",(unsigned int)4);
-    
 
 }
