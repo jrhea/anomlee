@@ -5,3 +5,4 @@ wasi-sdk
 .DS_Store
 *.wasm
 */target
+c/random-forest.c

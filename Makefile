@@ -23,6 +23,8 @@ build: build-wasm build-native
 	cp ./runtime/target/debug/anmlee build/
 
 benchmark: 
+	@echo "########## Python Benchmark: ###########"
+	@./python/RandomForrestClassifier.py inference
 	@echo "########## eWasm Benchmark: ###########"
 	@cd runtime && cargo test --release -- --nocapture
 	@echo "########## C Benchmark: ##########"
