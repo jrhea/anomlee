@@ -31,7 +31,7 @@ build-native: generate-c
 
 build-wasm: generate-c
 	mkdir -p $(OUT_DIR)
-	clang -v $(CFLAGS) -O3 -flto -nostartfiles -Wl,--allow-undefined-file=c/anmlee.syms -Wl,--no-entry -Wl,--export-all -Wl,--lto-O3 --no-standard-libraries --target=wasm32-unknown-unkown -o $(OUT_DIR)/random-forest.wasm c/random-forest.c
+	clang -v $(CFLAGS) -O3 -flto -nostartfiles -Wl,--allow-undefined-file=c/anmlee.syms -Wl,--no-entry -Wl,--export-dynamic -Wl,--lto-O3 --no-standard-libraries --target=wasm32-unknown-unkown -o $(OUT_DIR)/random-forest.wasm c/random-forest.c
 
 runtime: build-wasm
 	cd runtime && cargo build --no-default-features 
