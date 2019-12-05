@@ -428,21 +428,21 @@ static int max(double arr[], int n)
 EXPORT void main() {
     double input[4] = {5.0,3.4,1.5,0.2};
     double output[3] = { 0 };
-    char *output_names[3] = {"setosa","versicolor","virginica"};
+    const char *output_names[3] = {"setosa    ","versicolor","virginica "};
     score(input,output);
-    char prob_str[19] = "\nProbabilities: \n";
+    const char prob_str[19] = "\nProbabilities: \n";
     print((const unsigned int *)prob_str,(unsigned int)19);
     for(int i = 0; i < 3; i++) {
-      char output_str[6];
+      const char output_str[6];
       f2s(output[i],output_str,4);
       print((const unsigned int *)output_str,(unsigned int)6);
       print((const unsigned int *)" ",(unsigned int)1);
     }
-    
-    char model_pred_str[20] = "\n\nModel Predicts: \n";
-    char *predicted_name = output_names[max(output,3)];
-    print((const unsigned int *)model_pred_str,(unsigned int)20);
-    print((const unsigned int *)predicted_name,(unsigned int)6);
+    print((const unsigned int *)"\n\n",(unsigned int)4);
+    const char model_pred_str[22] = "Model Predicts: \n";
+    const char *predicted_name = output_names[max(output,3)];
+    print((const unsigned int *)model_pred_str,(unsigned int)22);
+    print((const unsigned int *)predicted_name,(unsigned int)10);
     print((const unsigned int *)"\n\n",(unsigned int)4);
     
 
