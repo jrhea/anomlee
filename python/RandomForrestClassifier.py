@@ -55,9 +55,9 @@ elif sys.argv[1] == "inference":
     features = df.columns[:4]
 
     clf = pickle.load(open(filename, 'rb'))
-
+    inputs = test[features].head(1)
     start = datetime.datetime.now()
-    result = clf.predict(test[features].head(1))
+    result = clf.predict(inputs)
     end = datetime.datetime.now()
     delta = end - start
     print("\nExecution time: ", delta.microseconds, " microseconds.\n")
