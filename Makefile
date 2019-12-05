@@ -35,6 +35,7 @@ build-wasm: generate-c
 
 runtime: build-wasm
 	cd runtime && cargo build --no-default-features 
+	cp ./runtime/target/debug/anmlee build/
 
 clean:
 	cd runtime && cargo clean

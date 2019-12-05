@@ -25,12 +25,6 @@ Install NinJa
 brew install ninja
 ```
 
-Install Wasmer: The Universal WebAssembly Runtime
-
-```bash
-curl https://get.wasmer.io -sSfL | sh
-```
-
 ## Build 
 
 Native:
@@ -46,14 +40,8 @@ make build-wasm
 
 ## Run
 
-Native
 ```bash
-./build/random-forest
-```
-
-Wasm
-```bash
-wasmer run build/random-forest.wasm 
+./build/anmlee 
 ```
 
 ## Output
@@ -73,7 +61,11 @@ Currently there is a single random forest classifier model that is trained to de
 
 
 ```bash
-$ wasmer run build/random-forest.wasm 
-Probabilities: 1.000000 0.000000 0.000000 
-Model Predicts: setosa
+$ ./build/anmlee 
+
+Probabilities: 
+1.0000 .0000 .0000 
+
+Model Predicts: 
+setosa
 ```
