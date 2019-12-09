@@ -6,3 +6,5 @@ wasi-sdk
 *.wasm
 */target
 c/random-forest.c
+*.png
+mnist-model.h5
