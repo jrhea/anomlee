@@ -1,10 +1,10 @@
 build
-python/.ipynb_checkpoints
+**/.ipynb_checkpoints
 wasi-libc
 wasi-sdk
 .DS_Store
 *.wasm
 */target
-c/random-forest.c
+**/iris-model.c
 *.png
-mnist-model.h5
+**/mnist-model.h5
