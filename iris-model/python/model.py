@@ -15,7 +15,7 @@ if num_args == 1:
     print("Not enough arguments!");
     exit;
 
-filename = './build/random-forest.pkl'
+filename = './../build/iris-model.pkl'
 if sys.argv[1] == "train":
     np.random.seed(0)
     iris = load_iris()

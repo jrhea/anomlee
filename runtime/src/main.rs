@@ -9,7 +9,7 @@ fn main() {
 fn load(logging: bool) -> RootRuntime<'static>  {
     fn asm() -> Vec<u8> {
         let ret = include_bytes!(concat!(
-            env!("OUT_DIR"),"/../../../../../../build/random-forest.wasm"));
+            env!("OUT_DIR"),"/../../../../../../build/iris-model.wasm"));
         ret.to_vec()
     }
     let code = asm();

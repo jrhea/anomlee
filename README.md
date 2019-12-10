@@ -2,11 +2,32 @@
 
 :muscle: by Quilt's [ewasm-rt](https://github.com/quilt/ewasm-rt)
 
-This repo demonstrates how a trained ML model could run inside an Ethereum 2 EE.  
+This repo demonstrates how a trained ML model could run inside an Ethereum 2 EE.
 
-### Random Forest Classifier
+## Prerequisits
 
-Currently there is a single random forest classifier model that is trained to determine which of the following types of iris flowers:
+Install LLVM
+
+```bash
+brew install llvm
+echo 'export PATH="/usr/local/opt/llvm/bin:$PATH"' >> ~/.bash_profile
+```
+
+Install the WebAssembly Binary Toolkit
+
+```bash
+brew install wabt
+```
+
+## Build 
+
+```bash
+make all
+```
+
+## Random Forest Classifier (iris model)
+
+This model that is trained to determine which of the following types of iris flowers:
 
 - setosa
 - versicolor
@@ -27,56 +48,13 @@ Currently there is a single random forest classifier model that is trained to de
 **Binary size:**
 - 826 bytes
 
-### Prerequisits
+## Handwritten Digit Classifier (digit model)
 
-Install LLVM
+This model uses a sequential neural network model to classify handwritten digits from the MINST database
 
-```bash
-brew install llvm
-echo 'export PATH="/usr/local/opt/llvm/bin:$PATH"' >> ~/.bash_profile
-```
+> TODO: finish
 
-Install the WebAssembly Binary Toolkit
-
-```bash
-brew install wabt
-```
-
-### Build 
-
-```bash
-make build
-```
-
-### Run Native
-
-```bash
-$ ./build/random-forest
-
-Execution time: 0 microseconds
-
-
-Probabilities: 
-1.000000 0.000000 0.000000 
-
-Model Predicts: 
-setosa    
-
-```
-
-### Run eWASM
-
-```bash
-$ ./build/anomlee
-
-Probabilities: 
-1.0000 .0000 .0000 
-
-Model Predicts: 
-setosa    
-```
-
-### Run Benchmark
+## Run Benchmarks (all models)
 
 ```bash
 $ make benchmark
