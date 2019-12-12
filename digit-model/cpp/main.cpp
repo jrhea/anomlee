@@ -8,7 +8,7 @@ fdeep::tensor5 cimg_to_tensor5(const cimg_library::CImg<unsigned char>& image,
     const int width = image.width();
     const int height = image.height();
     const int channels = image.spectrum();
-
+    std::cout << "(width,height,channels) = (" << width << "," << height << "," << channels << ")" << std::endl;
     std::vector<unsigned char> pixels;
     pixels.reserve(height * width * channels);
 
@@ -27,23 +27,19 @@ fdeep::tensor5 cimg_to_tensor5(const cimg_library::CImg<unsigned char>& image,
         }
     }
 
-    return fdeep::tensor5_from_bytes(pixels.data(), height, width, channels,
+    return fdeep::tensor5_from_bytes(pixels.data(), 1, 1, 784,
         low, high);
 }
 
 int main()
 {
-    /*const auto model = fdeep::load_model("./build/digit-model.json");
-    
-    const auto result = model.predict(
-        {fdeep::tensor5(fdeep::shape5(1, 1, 1, 1, 784), {})});
-    std::cout << fdeep::show_tensor5s(result) << std::endl;*/
-
-
-    const cimg_library::CImg<unsigned char> image("./build/test3.png");
+    const cimg_library::CImg<unsigned char> image("./build/test5.png");
     const auto model = fdeep::load_model("./build/digit-model.json");
     // Use the correct scaling, i.e., low and high.
     const auto input = cimg_to_tensor5(image, 0.0f, 1.0f);
+    auto start = std::chrono::high_resolution_clock::now();
     const auto result = model.predict_class({input});
-    std::cout << result << std::endl;
+    auto elapsed = std::chrono::high_resolution_clock::now() - start;
+    long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count();
+    std::cout << "Predicted number: " << result << " in " << microseconds << " microseconds." << std::endl;
 }
