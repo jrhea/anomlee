@@ -7,4 +7,9 @@ wasi-sdk
 */target
 **/iris-model.c
 *.png
-**/mnist-model.h5
+digit-model/cpp/frugally-deep
+digit-model/cpp/FunctionalPlus
+digit-model/cpp/eigen
+digit-model/cpp/json
+digit-model/cpp/CImg-2.8.0
+digit-model/cpp/CImg_2.8.0.zip

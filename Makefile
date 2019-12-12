@@ -14,7 +14,7 @@ iris:
 	cd $(IRIS_DIR) && make $@
 
 digit:
-#	cd $(DIGIT_DIR) && make $@
+	cd $(DIGIT_DIR) && make $@
 
 benchmark:
 	cd $(IRIS_DIR) && make $@
