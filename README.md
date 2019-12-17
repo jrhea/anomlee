@@ -19,6 +19,14 @@ Install the WebAssembly Binary Toolkit
 brew install wabt
 ```
 
+Install Python Environment & Dependencies
+
+```
+python3 -m venv env
+source ./env/bin/activate
+pip3 install -r requirements.txt
+```
+
 ## Build 
 
 ```bash
