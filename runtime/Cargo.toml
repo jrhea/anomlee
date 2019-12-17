@@ -10,4 +10,4 @@ include = [
 ]
 
 [dependencies]
-ewasm = { path = "../../ewasm-rt" }
+ewasm = "0.2.3"
