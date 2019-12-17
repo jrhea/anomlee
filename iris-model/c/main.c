@@ -27,16 +27,6 @@ static void reverse(char* str, int len)
     } 
 } 
 
-static double power(double x, double y)
-{
-    double result = x;
-    while(y > 0) {
-        result *= y;
-        y--;
-    }
-    return result;
-}
-
 // Converts a given integer x to char[]
 static int i2s(int x, char str[], int d) 
 { 
@@ -62,7 +52,7 @@ static void f2s(float n, char* res, int afterpoint)
 
     if (afterpoint != 0) { 
         res[i] = '.';
-        fpart = fpart * power(10, afterpoint); 
+        fpart = fpart * pow(10, afterpoint); 
         i2s((int)fpart, res + i + 1, afterpoint); 
     } 
 } 
